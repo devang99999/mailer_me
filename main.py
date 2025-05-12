@@ -85,7 +85,8 @@ def scrapper():
         with sync_playwright() as p:
             browser = p.chromium.launch(headless=False)
             page = browser.new_page()
-            page.goto("https://news.mit.edu/topic/artificial-intelligence2/")
+            url1 = os.getenv("URL1")
+            page.goto(url1)
             page.wait_for_timeout(5000)
     
             if page.query_selector('img[src*="captcha"]'):
@@ -104,13 +105,13 @@ def scrapper():
                 if not title_tag or not link_tag:
                     continue
                 title = title_tag.get_text(strip=True)
-                url = "https://news.mit.edu" + link_tag["href"]
+                url = os.getenv("URL1_1") + link_tag["href"]
                 full_text = extract_full_article(page, url)
                 data.append({
                     "title": title,
                     "url": url,
                     "content": full_text,
-                    "source": "MIT News",
+                    "source": "URL1",
                     "type":"scrap"
                 })
     
@@ -136,7 +137,7 @@ def scrapper():
         with sync_playwright() as p:
             browser = p.chromium.launch(headless=False)
             page = browser.new_page()
-            page.goto("https://techfundingnews.com/category/AI/")
+            page.goto(os.getenv("URL2"))
             page.wait_for_timeout(5000)
     
             soup = BeautifulSoup(page.content(), "html.parser")
@@ -153,7 +154,7 @@ def scrapper():
                     "title": title,
                     "url": url,
                     "content": full_text,
-                    "source": "Tech Funding News",
+                    "source": "URL2",
                     "type":"scrap"
     
                 })
@@ -184,7 +185,7 @@ def scrapper():
             browser = p.chromium.launch(headless=False)
             page = browser.new_page()
     
-            url = "https://aiagentstore.ai/ai-agent-news/this-week/"
+            url = os.getenv("URL3")
             page.goto(url)
             page.wait_for_timeout(5000)
     
@@ -544,7 +545,7 @@ def run_pipeline():
     emailer()
 
 # Schedule the full pipeline to run at 9:00 AM daily
-schedule.every().day.at("16:19").do(run_pipeline)
+schedule.every().day.at("12:57").do(run_pipeline)
 
 print("📅 Scheduler started. Waiting for 9:00 AM daily to run the pipeline...")
 

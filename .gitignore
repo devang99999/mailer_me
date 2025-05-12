@@ -17,7 +17,6 @@ ai_news.json
 check_groq.py
 daily_runner.py
 emailer_prime.py
-email_module.py
 filter_prime.py
 marktechpost_raw.html
 requiremets.txt

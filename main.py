@@ -83,7 +83,7 @@ def scrapper():
             return "❌ Full article not found."
     
         with sync_playwright() as p:
-            browser = p.chromium.launch(headless=False)
+            browser = p.chromium.launch(headless=True)
             page = browser.new_page()
             url1 = os.getenv("URL1")
             page.goto(url1)
@@ -135,7 +135,7 @@ def scrapper():
             return "❌ Full article not found."
     
         with sync_playwright() as p:
-            browser = p.chromium.launch(headless=False)
+            browser = p.chromium.launch(headless=True)
             page = browser.new_page()
             page.goto(os.getenv("URL2"))
             page.wait_for_timeout(5000)
@@ -182,7 +182,7 @@ def scrapper():
             return "❌ Full article not found."
     
         with sync_playwright() as p:
-            browser = p.chromium.launch(headless=False)
+            browser = p.chromium.launch(headless=True)
             page = browser.new_page()
     
             url = os.getenv("URL3")
@@ -545,7 +545,7 @@ def run_pipeline():
     emailer()
 
 # Schedule the full pipeline to run at 9:00 AM daily
-schedule.every().day.at("12:57").do(run_pipeline)
+schedule.every().day.at("17:36").do(run_pipeline)
 
 print("📅 Scheduler started. Waiting for 9:00 AM daily to run the pipeline...")
 

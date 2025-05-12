@@ -8,7 +8,7 @@ load_dotenv()
 # MongoDB connection setup
 MONGO_URI = os.getenv("MONGO_URI")
 client = MongoClient(MONGO_URI)
-db = client["buyerPassdn"]  # You can change the database name
+db = client["mailer"]  # You can change the database name
 collection = db["mailer"]   # You can change the collection name
 summary_collection = db["mailer"]  # Separate collection for summaries
 

@@ -192,7 +192,7 @@ pymongo==4.6.3
 
 
 
-For issues, ideas, or contributions, contact <a href="https://github.com/devang99999">Devang</a>.
+For issues, ideas, or contributions, contact <a href="https://www.linkedin.com/in/webdevanggandhi/">Devang</a>.
 
 > **Note:** Test the system for 2-3 days before full production.<br/>
 > **Note:** consider sending the news letter weekly as the websites are not updated daily.
